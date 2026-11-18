@@ -19,7 +19,7 @@ case_studies_heading: Case studies
 testimonials_heading: What it's like to work with me
 testimonials_more: Read all my testimonials in full on my [LinkedIn profile ↗](https://www.linkedin.com/in/dawnbwalter/)
 
-about_heading: About
+about_heading: About me
 about_photo: images/dawn-walter.jpg
 
 # What search engines and link previews (LinkedIn, Slack, etc.) show for the homepage
@@ -33,7 +33,7 @@ site_url: https://dawnbwalter.com
 labels:
   nav_work: Case studies
   nav_working_with_me: Testimonials
-  nav_about: About
+  nav_about: About me
   nav_linkedin: LinkedIn ↗
   read_case_study: Read case study →
   filters_all: All
