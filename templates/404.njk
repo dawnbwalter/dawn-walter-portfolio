@@ -1,0 +1,22 @@
+---
+permalink: /404.html
+eleventyExcludeFromCollections: true
+---
+{%- extends "base.njk" -%}
+{%- set pageTitle = site.notFound.page_title ~ " · " ~ site.home.name -%}
+{%- set description = site.home.description -%}
+{%- block main -%}
+{%- set p = site.notFound -%}
+<main class="cs">
+  <div class="cs-head wrap">
+    <p class="eyebrow">{{ p.eyebrow | inline | safe }}</p>
+    <h1>{{ p.headline | inline | safe }}</h1>
+  </div>
+  <section class="row row--ruled row--last wrap">
+    <div class="row__body">
+      {{ p.html | safe }}
+      <p><a href="/">{{ p.link_text }}</a></p>
+    </div>
+  </section>
+</main>
+{%- endblock -%}

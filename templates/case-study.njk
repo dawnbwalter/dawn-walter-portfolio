@@ -1,0 +1,57 @@
+---
+pagination:
+  data: site.caseStudies
+  size: 1
+  alias: cs
+permalink: "/{{ cs.slug }}/index.html"
+---
+{%- extends "base.njk" -%}
+{%- set pageTitle = (cs.page_title or cs.title) ~ " · " ~ site.home.name -%}
+{%- set description = cs.description or cs.card_title or cs.title -%}
+{%- block main -%}
+{%- set L = site.home.labels -%}
+<main class="cs">
+  <div class="cs-head wrap">
+    <a class="back" href="/#work">{{ L.back_to_work }}</a>
+    {%- if cs.logo %}
+    <img class="cs-logo" src="{{ cs.logo | img }}" alt="{{ cs.logo_alt }}">
+    {%- endif %}
+    <p class="eyebrow">{{ L.case_study }}</p>
+    <h1>{{ cs.title | inline | safe }}</h1>
+  </div>
+  {%- if cs.hero_image %}
+
+  <figure class="cs-hero wrap">
+    <div class="cs-hero__panel">
+      <img{% if cs.hero_low_detail %} class="low-detail"{% endif %} src="{{ cs.hero_image | img }}" alt="{{ cs.hero_alt }}">
+    </div>
+    {%- if cs.hero_caption %}
+    <figcaption>{{ cs.hero_caption | inline | safe }}</figcaption>
+    {%- endif %}
+  </figure>
+  {%- endif %}
+  {%- if cs.project %}
+
+  <section class="row row--ruled{% if not cs.sections.length %} row--last{% endif %} wrap">
+    <h2 class="label">{{ L.project }}</h2>
+    <div class="row__body"><p class="project-name">{{ cs.project | inline | safe }}</p></div>
+  </section>
+  {%- endif %}
+  {%- for s in cs.sections %}
+
+  <section class="row row--ruled{% if loop.last %} row--last{% endif %} wrap">
+    <h2 class="label">{{ s.label | inline | safe }}</h2>
+    <div class="row__body">
+      {{ s.html | safe }}
+    </div>
+  </section>
+  {%- endfor %}
+</main>
+
+<section class="next" aria-labelledby="next">
+  <a class="wrap" href="/{{ cs.next.slug }}/">
+    <p id="next" class="eyebrow">{{ L.next_case_study }}</p>
+    <p class="next__title">{{ cs.next.title | inline | safe }} →</p>
+  </a>
+</section>
+{%- endblock -%}

@@ -1,0 +1,161 @@
+---
+permalink: /index.html
+isHome: true
+---
+{%- extends "base.njk" -%}
+{%- set pageTitle = site.home.page_title -%}
+{%- set description = site.home.description -%}
+{%- from "flag.njk" import flag -%}
+{%- block main -%}
+{%- set h = site.home -%}
+{%- set L = h.labels -%}
+{%- set a = site.about -%}
+<main>
+  <section class="hero wrap">
+    <p class="eyebrow hero-eyebrow">{{ h.eyebrow | inline | safe }}</p>
+    <h1>{{ h.headline | inline | safe }}</h1>
+    <p class="intro">{{ h.intro | inline | safe }}</p>
+  </section>
+
+  <section class="focus wrap pills" aria-label="{{ L.focus_areas }}">
+    {%- for item in h.focus_areas %}
+    <span class="pill">{{ item | inline | safe }}</span>
+    {%- endfor %}
+  </section>
+
+  <section id="highlights" class="highlights wrap">
+    <h2 class="h-section">{{ h.highlights_heading | inline | safe }}</h2>
+    <div class="highlight-grid">
+      {%- for hl in site.highlights %}
+      <div class="highlight"><p class="figure">{{ hl.figure | inline | safe }}</p><p>{{ hl.text | inline | safe }}</p></div>
+      {%- endfor %}
+    </div>
+  </section>
+
+  <section id="work" class="work wrap">
+    <h2 class="h-section">{{ h.case_studies_heading | inline | safe }}</h2>
+    <div class="cards">
+      {%- for cs in site.caseStudies %}
+      <a class="case-card" href="/{{ cs.slug }}/">
+        <div class="case-card__text">
+          <div>
+            <p class="case-card__product">{{ cs.card_product | inline | safe }}</p>
+            <p class="case-card__title">{{ (cs.card_title or cs.title) | inline | safe }}</p>
+          </div>
+          <div>
+            <p class="case-card__outcome">{{ cs.card_outcome | inline | safe }}</p>
+            <span class="case-card__cta">{{ L.read_case_study }}</span>
+          </div>
+        </div>
+        <div class="case-card__visual"><img{% if cs.card_image_small %} class="small"{% endif %} src="{{ (cs.card_image or cs.hero_image) | img }}" alt=""></div>
+      </a>
+      {%- endfor %}
+    </div>
+  </section>
+
+  <section id="working-with-me" class="testimonials">
+    <div class="wrap">
+      <h2 class="h-section">{{ h.testimonials_heading | inline | safe }}</h2>
+      <div class="filters" role="group" aria-label="{{ L.filter_testimonials }}">
+        <button type="button" class="filter" data-filter="all" aria-pressed="true">{{ L.filters_all }}</button>
+        <button type="button" class="filter" data-filter="manager" aria-pressed="false">{{ L.filters_manager }}</button>
+        <button type="button" class="filter" data-filter="xfn" aria-pressed="false">{{ L.filters_xfn }}</button>
+        <button type="button" class="filter" data-filter="peer" aria-pressed="false">{{ L.filters_peer }}</button>
+      </div>
+      <div class="quotes">
+        {%- for t in site.testimonials %}
+        <figure class="quote" data-group="{{ t.group }}">
+          <blockquote>“{{ t.quote | trim | inline | safe }}”</blockquote>
+          <figcaption><img src="{{ t.photo | img }}" alt=""><span class="quote__who"><span class="quote__name">{{ t.name }}</span><span class="quote__role">{{ t.role }}</span></span></figcaption>
+        </figure>
+        {%- endfor %}
+      </div>
+      <p class="more">{{ h.testimonials_more | inline | safe }}</p>
+    </div>
+  </section>
+
+  <section id="about" class="about wrap">
+    <div class="about__text">
+      <h2 class="h-section">{{ h.about_heading | inline | safe }}</h2>
+      {{ h.about_html | safe }}
+    </div>
+    <img class="about__photo" src="{{ h.about_photo | img }}" alt="{{ h.name }}">
+  </section>
+
+  <section class="row wrap" aria-labelledby="skills">
+    <h3 id="skills" class="label">{{ L.skills }}</h3>
+    <div class="row__body skills">
+      <div class="pills">
+        {%- for s in a.skills %}
+        <span class="pill pill--white">{{ s | inline | safe }}</span>
+        {%- endfor %}
+      </div>
+      <div>
+        <p class="tools-label">{{ L.tools }}</p>
+        <div class="pills">
+          {%- for s in a.tools %}
+          <span class="pill">{{ s | inline | safe }}</span>
+          {%- endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience wrap" aria-labelledby="experience">
+    <h3 id="experience" class="label">{{ L.experience }}</h3>
+    {%- for job in a.experience %}
+    <div class="job">
+      <div class="job__meta">
+        {%- if job.logo %}
+        <img class="job__logo{% if job.logo_tall %} job__logo--tall{% endif %}" src="{{ job.logo | img }}" alt="{{ job.logo_alt }}">
+        {%- endif %}
+        <h4 class="job__title">{{ job.title | inline | safe }}</h4>
+        <p class="job__dates">{{ job.dates | inline | safe }}</p>
+        <p class="job__company">{{ job.company | inline | safe }}</p>
+      </div>
+      <ul>
+        {%- for b in job.bullets %}
+        <li>{{ b | inline | safe }}</li>
+        {%- endfor %}
+      </ul>
+    </div>
+    {%- endfor %}
+    {%- if a.experience_more %}
+    <p class="more">{{ a.experience_more | inline | safe }}</p>
+    {%- endif %}
+  </section>
+
+  <section class="row wrap" aria-labelledby="education">
+    <h3 id="education" class="label">{{ L.education }}</h3>
+    <ul class="row__body list-rows">
+      {%- for e in a.education %}
+      <li><p class="item-title">{{ e.name | inline | safe }}{% if e.tag %} <span class="tag">{{ e.tag }}</span>{% endif %}</p><p class="item-meta">{{ e.detail | inline | safe }}</p></li>
+      {%- endfor %}
+    </ul>
+  </section>
+
+  <section class="row wrap" aria-labelledby="professional-development">
+    <h3 id="professional-development" class="label">{{ L.professional_development }}</h3>
+    <ul class="row__body list-rows">
+      {%- for e in a.professional_development %}
+      <li><p class="item-title">{{ e.name | inline | safe }}{% if e.tag %} <span class="tag">{{ e.tag }}</span>{% endif %}</p><p class="item-meta">{{ e.detail | inline | safe }}</p></li>
+      {%- endfor %}
+    </ul>
+  </section>
+
+  <section class="row languages wrap" aria-labelledby="languages">
+    <h3 id="languages" class="label">{{ L.languages }}</h3>
+    <ul class="row__body list-rows">
+      {%- for lang in a.languages %}
+      <li class="lang">
+        <span class="flags" aria-hidden="true">{% for code in lang.flags %}{{ flag(code) }}{% endfor %}</span>
+        <span class="lang__name">{{ lang.name | inline | safe }}</span><span class="muted">{{ lang.level | inline | safe }}</span>
+      </li>
+      {%- endfor %}
+    </ul>
+  </section>
+</main>
+{%- endblock -%}
+{%- block scripts %}
+<script src="/filters.js"></script>
+{%- endblock -%}

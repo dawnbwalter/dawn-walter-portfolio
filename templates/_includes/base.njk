@@ -1,0 +1,51 @@
+{%- set h = site.home -%}
+{%- set L = h.labels -%}
+{%- set base = "" if isHome else "/" -%}
+{%- set shareUrl = (h.site_url ~ (h.share_image | img | url)) if h.site_url else (h.share_image | img | url) -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ pageTitle }}</title>
+<meta name="description" content="{{ description }}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ h.name }}">
+<meta property="og:title" content="{{ pageTitle }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:image" content="{{ shareUrl }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+{%- if h.site_url %}
+<meta property="og:url" content="{{ h.site_url }}{{ page.url | url }}">
+<link rel="canonical" href="{{ h.site_url }}{{ page.url | url }}">
+{%- endif %}
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Schibsted+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body{% if isHome %} id="top"{% endif %}>
+
+<header class="site-header wrap">
+  <a class="site-name" href="{{ '#top' if isHome else '/' }}">{{ h.name }}</a>
+  <nav class="site-nav" aria-label="{{ L.main_menu }}">
+    <a href="{{ base }}#work">{{ L.nav_work }}</a>
+    <a href="{{ base }}#working-with-me">{{ L.nav_working_with_me }}</a>
+    <a href="{{ base }}#about">{{ L.nav_about }}</a>
+    <a href="{{ h.linkedin }}">{{ L.nav_linkedin }}</a>
+  </nav>
+</header>
+
+{% block main %}{% endblock %}
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>{{ h.footer }}</span>
+    <a href="{{ h.linkedin }}">{{ L.footer_linkedin }}</a>
+  </div>
+</footer>
+{% block scripts %}{% endblock %}
+</body>
+</html>
