@@ -35,7 +35,6 @@ labels:
   nav_working_with_me: Working with me
   nav_about: About
   nav_linkedin: LinkedIn ↗
-  menu: Menu          # the button that opens the menu on phones
   read_case_study: Read case study →
   filters_all: All
   filters_manager: Managers

@@ -7,7 +7,6 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "design/styles.css": "styles.css",
     "design/filters.js": "filters.js",
-    "design/menu.js": "menu.js",
     "design/images": "images",
     // Browser tab and bookmark icons, served from the site root
     "design/icons": "/",
@@ -17,6 +16,10 @@ export default function (eleventyConfig) {
   eleventyConfig.addWatchTarget("content/");
   eleventyConfig.addWatchTarget("design/");
   eleventyConfig.addWatchTarget("lib/");
+
+  // A new number on every build, added to the stylesheet and script links
+  // so browsers fetch the latest version instead of an old saved copy
+  eleventyConfig.addGlobalData("buildVersion", () => Date.now().toString(36));
 
   eleventyConfig.setNunjucksEnvironmentOptions({ autoescape: true, throwOnUndefined: false });
   eleventyConfig.addFilter("inline", (text) => inline(text));
