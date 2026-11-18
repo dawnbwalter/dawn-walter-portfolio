@@ -8,6 +8,8 @@ export default function (eleventyConfig) {
     "design/styles.css": "styles.css",
     "design/filters.js": "filters.js",
     "design/images": "images",
+    // Browser tab and bookmark icons, served from the site root
+    "design/icons": "/",
   });
 
   // Rebuild the preview when content or the design changes

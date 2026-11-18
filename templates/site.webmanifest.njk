@@ -1,0 +1,18 @@
+---
+permalink: /site.webmanifest
+eleventyExcludeFromCollections: true
+---
+{#- Tells Android which name and icon to use when someone adds the site to their home screen.
+    The words come from content/home.md (page_title and name). -#}
+{
+  "name": {{ site.home.page_title | dump | safe }},
+  "short_name": {{ site.home.name | dump | safe }},
+  "icons": [
+    { "src": "/favicon.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#FAFAF7",
+  "theme_color": "#FAFAF7"
+}
