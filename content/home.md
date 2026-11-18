@@ -31,8 +31,8 @@ site_url: https://dawnbwalter.com
 
 # Small labels used around the site: menu, buttons, and section names
 labels:
-  nav_work: Work
-  nav_working_with_me: Working with me
+  nav_work: Case studies
+  nav_working_with_me: Testimonials
   nav_about: About
   nav_linkedin: LinkedIn ↗
   read_case_study: Read case study →
@@ -47,7 +47,7 @@ labels:
   professional_development: Professional Development
   languages: Languages
   case_study: Case study
-  back_to_work: ← All work
+  back_to_work: ← All case studies
   project: Project
   next_case_study: Next case study
   footer_linkedin: Find me on LinkedIn ↗
