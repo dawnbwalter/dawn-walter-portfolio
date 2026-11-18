@@ -7,6 +7,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "design/styles.css": "styles.css",
     "design/filters.js": "filters.js",
+    "design/menu.js": "menu.js",
     "design/images": "images",
     // Browser tab and bookmark icons, served from the site root
     "design/icons": "/",

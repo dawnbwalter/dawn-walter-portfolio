@@ -13,6 +13,7 @@
   --accent: #2D5B88;        /* Denim */
   --accent-hover: #1F4566;
   --accent-tint: #E6EEF5;
+  --bg-header: rgba(250, 250, 247, 0.88);   /* sticky header: page background, slightly see-through */
   --font-body: Inter, system-ui, sans-serif;
   --font-head: 'Schibsted Grotesk', system-ui, sans-serif;
   --max: 1200px;
@@ -164,3 +165,31 @@ a:hover { color: var(--accent-hover); }
 .next .eyebrow { margin-bottom: 12px; }
 .next__title { margin: 0; font-family: var(--font-head); font-size: clamp(28px, 3.4vw, 44px); font-weight: 600; line-height: 1.15; }
 .next a:hover .next__title { color: var(--accent); }
+
+/* Sticky header: stays at the top while you scroll.
+   On phones the links fold behind a "Menu" button (see menu.js).
+   If JavaScript doesn't load, phones show the links as normal and the header scrolls away. */
+.site-header-bar { z-index: 100; background: var(--bg-header); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.js .site-header-bar { position: sticky; top: 0; }
+html { scroll-padding-top: 96px; }   /* section links stop below the header, not behind it */
+
+.menu-toggle { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; margin-right: -14px; border: 0; border-radius: 999px; background: transparent; color: var(--ink); font: inherit; font-size: 16px; font-weight: 500; cursor: pointer; }
+.menu-toggle:hover { color: var(--accent); }
+.menu-toggle[hidden] { display: none; }
+.menu-toggle .icon-close { display: none; }
+.is-open .menu-toggle .icon-open { display: none; }
+.is-open .menu-toggle .icon-close { display: block; }
+
+@media (max-width: 719.98px) {
+  .js .site-header { position: relative; padding-top: 12px; padding-bottom: 12px; }
+  .js .site-nav { display: none; }
+  .js .site-header.is-open .site-nav { display: flex; flex-direction: column; gap: 0; position: absolute; top: 100%; left: 0; right: 0; padding: 4px 32px 16px; background: var(--bg); border-bottom: 1px solid var(--line); box-shadow: 0 12px 24px rgba(23, 23, 26, 0.08); }
+  .js .site-header.is-open .site-nav a { padding: 12px 0; font-size: 18px; border-top: 1px solid var(--line); }
+  .js .site-header.is-open .site-nav a:first-child { border-top: 0; }
+}
+
+@media (min-width: 720px) {
+  .site-header-bar { position: sticky; top: 0; }
+  .site-header { padding-top: 12px; padding-bottom: 12px; }
+  .menu-toggle { display: none !important; }
+}
