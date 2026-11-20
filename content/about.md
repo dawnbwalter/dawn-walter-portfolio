@@ -44,7 +44,7 @@ experience:
     logo_tall: true
     company: Research studio that grew into an international conference on socially-responsible AI.
     bullets:
-      - Founded and grew an international socially-responsible AI conference, delivering 3 summits in 3 years and securing sponsorship and funding from Microsoft UK, Spotify, and UKRI.
+      - Founded and grew an [international socially-responsible AI conference ↗](https://response-ability.tech), delivering 3 summits in 3 years and securing sponsorship and funding from Microsoft UK, Spotify, and UKRI.
       - Developed content strategy across complex subject areas and multiple sectors. Commissioned 50+ speakers for three international summits, guiding their talks for audience fit.
       - Planned, commissioned, created, and edited content across formats and audiences, including web content, articles, newsletters, social media, podcast editorial and digital delegate materials, turning specialist ideas into clear, audience-centred content.
       - Crafted compelling propositions that attracted Microsoft UK, Spotify, and UKRI (ESRC) as partners. Delivered three summits on time and to budget.
