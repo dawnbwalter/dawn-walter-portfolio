@@ -62,15 +62,14 @@ education:
     detail: University of Canterbury · 2009–2011
 
 professional_development:
+  - name: Accessible Content Design
+    detail: Content Design Ireland · 23–25 Nov 2026
   - name: Co-Chair, Intuit UK Women's Network
-    detail: 2 years
-  - name: Fundamentals of UX Writing
-    detail: UX Content Collective · Jun 2023
+    detail: Nov 2023 – Dec 2025
   - name: Practical AI for UX Professionals
     detail: Nielsen Norman Group · Jan 2025
-  - name: Accessible Content Design
-    tag: Upcoming        # delete this line once the course is done
-    detail: Content Design Ireland · 23–25 Nov 2026
+  - name: Fundamentals of UX Writing
+    detail: UX Content Collective · Jun 2023
 
 # flags: uk, de, es, it (an entry can have more than one)
 languages:
